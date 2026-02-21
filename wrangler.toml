@@ -1,0 +1,61 @@
+name = "domain-names-mcp-server"
+main = "src/index.ts"
+compatibility_date = "2025-04-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+UPSTREAM_BASE_URL = "https://webhosting4u.gr/customers/modules/addons/DomainsReseller/api/index.php"
+SESSION_TTL_SECONDS = "43200"
+RATE_LIMIT_LOOKUP = "10"
+RATE_LIMIT_REGISTER = "5"
+RATE_LIMIT_GENERAL = "60"
+RATE_LIMIT_WINDOW_SECONDS = "60"
+
+# account_id: set via CLOUDFLARE_ACCOUNT_ID environment variable
+
+[[kv_namespaces]]
+binding = "SESSIONS"
+id = "daf16fa552c7433480d0b97dc439213a"
+
+[[d1_databases]]
+binding = "AUDIT_DB"
+database_name = "domains-mcp-audit"
+database_id = "1ed0f131-8171-410b-8f32-270dba1b5477"
+
+[durable_objects]
+bindings = [
+  { name = "RATE_LIMITER", class_name = "RateLimiter" }
+]
+
+[[migrations]]
+tag = "v1"
+new_classes = ["RateLimiter"]
+
+# --- Production Environment ---
+[env.production]
+name = "domain-names-mcp-server"
+routes = [
+  { pattern = "mcp-domains.webhosting4u.gr", custom_domain = true }
+]
+
+[env.production.vars]
+UPSTREAM_BASE_URL = "https://webhosting4u.gr/customers/modules/addons/DomainsReseller/api/index.php"
+SESSION_TTL_SECONDS = "43200"
+RATE_LIMIT_LOOKUP = "10"
+RATE_LIMIT_REGISTER = "5"
+RATE_LIMIT_GENERAL = "60"
+RATE_LIMIT_WINDOW_SECONDS = "60"
+
+[[env.production.kv_namespaces]]
+binding = "SESSIONS"
+id = "daf16fa552c7433480d0b97dc439213a"
+
+[[env.production.d1_databases]]
+binding = "AUDIT_DB"
+database_name = "domains-mcp-audit"
+database_id = "1ed0f131-8171-410b-8f32-270dba1b5477"
+
+[env.production.durable_objects]
+bindings = [
+  { name = "RATE_LIMITER", class_name = "RateLimiter" }
+]

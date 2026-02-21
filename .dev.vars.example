@@ -1,0 +1,2 @@
+# AES-256-GCM key for encrypting API keys at rest in KV (base64, 32 bytes)
+APIKEY_ENC_KEY=generate-a-random-32-byte-base64-key-here

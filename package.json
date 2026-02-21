@@ -1,0 +1,39 @@
+{
+  "name": "domain-names-mcp-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Production MCP server for WHMCS DomainsReseller API on Cloudflare Workers",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "deploy:production": "wrangler deploy --env production",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "db:migrate": "wrangler d1 execute domains-mcp-audit --file=./schema.sql"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Webhosting4U/Domain-Names-MCP-Server.git"
+  },
+  "author": "Webhosting4U",
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/Webhosting4U/Domain-Names-MCP-Server/issues"
+  },
+  "homepage": "https://github.com/Webhosting4U/Domain-Names-MCP-Server#readme",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0",
+    "agents": "^0.5.1",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.12.14",
+    "@cloudflare/workers-types": "^4.20250219.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4",
+    "wrangler": "^4.67.0"
+  }
+}

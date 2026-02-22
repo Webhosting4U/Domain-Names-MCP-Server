@@ -1,0 +1,26 @@
+# DomainsReseller MCP Server
+
+> MCP server for managing domain names from your IDE using natural language. Built for the Webhosting4U domain registrar.
+
+## Overview
+
+Production-ready Model Context Protocol (MCP) server that exposes 32 tools for domain management: registration, transfer, renewal, DNS, nameservers, WHOIS contacts, lock, email forwarding, pricing, and credits. Runs on Cloudflare Workers. Designed for use with VS Code, Cursor, or any MCP-compatible IDE.
+
+## How to use
+
+- Endpoint: https://mcp-domains.webhosting4u.gr/mcp
+- Transport: Streamable HTTP
+- Auth: Call auth_login with email and DomainsReseller API key; receive a session token valid 12 hours. Use the session_token for all other tool calls.
+- Prerequisites: Domain Reseller account and API key from Webhosting4U; credits required for register/transfer/renew.
+
+## Key links
+
+- Repository: https://github.com/Webhosting4U/Domain-Names-MCP-Server
+- Setup guide: https://github.com/Webhosting4U/Domain-Names-MCP-Server/blob/main/docs/CLIENT_SETUP.md
+- Webhosting4U: https://webhosting4u.gr
+- Domain Reseller signup: https://webhosting4u.gr/customers/index.php?rp=/store/webhosting/domain-reseller
+- MCP protocol: https://modelcontextprotocol.io/
+
+## Tech
+
+TypeScript, Cloudflare Workers, Workers KV, D1, Durable Objects, MCP Streamable HTTP, Zod. API keys encrypted at rest (AES-256-GCM). AGPL-3.0.

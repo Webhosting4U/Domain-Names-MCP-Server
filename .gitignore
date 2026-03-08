@@ -7,3 +7,9 @@ dist/
 .env
 .env.*
 !.dev.vars.example
+docs/wordpress-rss-featured-image-investigation.md
+docs/blog-post-domains-mcp-server-el.html
+docs/blog-post-domains-mcp-server-el.md
+docs/blog-post-rss-featured-image-el.html
+docs/wordpress-code-block-copy-README.md
+docs/wordpress-mcp-adapter-install.md
